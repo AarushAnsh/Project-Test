@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
-const Searchbar = () => {
-    const[movie,setMovie]=useState()
+const Searchbar = ({searchQuery , setSearchQuery}) => {
   return (
     <div>
       <input
         type='text'
         placeholder='Moviee Name'
         name="Movie_Search"
-        value={movie}
+        onChange={(e)=>setSearchQuery(e.target.value)}
+        value={searchQuery}
       />
     </div>
   )
