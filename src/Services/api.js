@@ -1,5 +1,3 @@
-import React from 'react'
-
 async function getMovies() {
      const url = "https://api.tvmaze.com/shows";
 

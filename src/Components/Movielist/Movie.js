@@ -1,22 +1,25 @@
-import React from 'react'
-import data from "../../Services/api"
-import Card from '../MovieCard/Card'
+import React from "react";
+import "./Movie.css";
+import Card from "../MovieCard/Card";
 
-const Movie = ({movie}) => {
-    
-  return (
-    <div>
-      {
-        movie.map((item)=> {
-            return(
-                <div key={item.id}>
-                   <Card   movie={item}/>
-                </div>
-            )
-        })
-      }
-    </div>
-  )
+const Movie = ({ movie }) => {
+
+const onClickHandler = (item) => {
+  router.push(`/movie/${item.id}`)
 }
 
-export default Movie
+
+  return (
+    <div className="movielist">
+      {movie.map((item) => {
+        return (
+          <div key={item.id} onClick={(item) => onClickHandler(item)}>
+            <Card movie={item} />
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default Movie;
