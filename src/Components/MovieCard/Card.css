@@ -1,10 +1,11 @@
-/* .card{
-   
+.card{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    border: 2px solid blue;
-     width: 12vw;
-     height: 60vh;
-} */
+    position: relative;
+}
+
+.card-icon{
+    position: absolute;
+    cursor: pointer;
+}

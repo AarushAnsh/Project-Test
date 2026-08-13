@@ -5,6 +5,7 @@ import MovieDetailsPage from "./Components/MovieDetailsPage";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import About from "./Components/About";
+import SavedMovie from "./Components/SavedMovie/SavedMovie";
 
 function App() {
  
@@ -15,6 +16,7 @@ function App() {
        <Route path="/" element={<Home/>}></Route>
        <Route path="/about" element={<About/>}></Route>
        <Route path="/movie/:id" element={<MovieDetailsPage />} />
+       <Route path="/savedMovie" element={<SavedMovie />} />
       </Routes>
     </div>
   );
