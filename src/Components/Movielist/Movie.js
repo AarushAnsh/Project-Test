@@ -1,20 +1,18 @@
 import React from "react";
 import "./Movie.css";
 import Card from "../MovieCard/Card";
+import { Route,Router } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 const Movie = ({ movie }) => {
-
-const onClickHandler = (item) => {
-  router.push(`/movie/${item.id}`)
-}
-
-
   return (
     <div className="movielist">
       {movie.map((item) => {
         return (
-          <div key={item.id} onClick={(item) => onClickHandler(item)}>
-            <Card movie={item} />
+          <div key={item.id}>
+            <Link to= {`/movie/${item.id}`} >
+              <Card movie={item} />
+            </Link>
           </div>
         );
       })}
