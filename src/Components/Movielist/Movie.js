@@ -1,16 +1,11 @@
 import React from "react";
-import "./Movie.css";
 import Card from "../MovieCard/Card";
 
 const Movie = ({ movie }) => {
   return (
-    <div className="movielist">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
       {movie.map((item) => {
-        return (
-          <div key={item.id}>
-              <Card movie={item} />
-          </div>
-        );
+        return <Card key={item.id} movie={item} />;
       })}
     </div>
   );

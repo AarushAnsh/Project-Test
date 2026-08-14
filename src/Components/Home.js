@@ -28,12 +28,12 @@ const Home = () => {
         setSearchQuery={setSearchQuery}
         submitHandler={submitHandler}
       /> */}
-      {loading && <p>Loading.....</p>}
-      {error && <p>{error}</p>}
+      {loading && <p className="text-sm text-gray-500">Loading.....</p>}
+      {error && <p className="text-sm text-red-600">Something went wrong</p>}
       {movie.length > 0 ? (
         <Movie movie={movie} />
       ) : (
-        !loading && <p>No movies found</p>
+        !loading && <p className="text-sm text-gray-500">No movies found</p>
       )}
     </div>
   );
