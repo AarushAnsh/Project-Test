@@ -22,7 +22,7 @@ function SavedMovie() {
         {getMovie.map((movie) => (
           <>
             <Card movie={movie} />
-            <FiDelete onClick={() => onDeleteSavedHandler(movie.id)} />
+            <FiDelete  />
           </>
         ))}
       </div>

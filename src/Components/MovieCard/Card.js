@@ -10,6 +10,9 @@ const Card = ({ movie }) => {
     navigate(`/movie/${movie.id}`);
   };
 
+
+ 
+
   const saveMovieHandler = () => {
     const getMovies = localStorage.getItem("savedMovie");
     if (getMovies) {
