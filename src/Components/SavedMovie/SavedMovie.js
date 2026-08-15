@@ -1,12 +1,14 @@
 import React from "react";
 import Card from "../MovieCard/Card";
 import { FiDelete } from "react-icons/fi";
+import { useState } from "react";
 
 function SavedMovie() {
-  const getMovie = JSON.parse(localStorage.getItem("savedMovie"));
+   const getMovie =
+    JSON.parse(localStorage.getItem("savedMovie")) || [];
 
 
-  //   const [savedMovie,setSavedMovie] = useState(getMovie)
+    const [savedMovie,setSavedMovie] = useState(getMovie || [])
   //   useEffect state update (sideeffect )
   //   const onDeleteSavedHandler = (movieID)=> {
   //     const filteredMovie = getMovie.filter((movie)=>movie.id!=movieID) 
@@ -14,6 +16,15 @@ function SavedMovie() {
   //     setMovie()
   //   }
 
+
+  const onDeleteSavedHandler = (movieID) => {
+  const filteredMovie = savedMovie.filter(
+    (movie) => movie.id !== movieID
+  );
+
+  setSavedMovie(filteredMovie);
+  localStorage.setItem("savedMovie", JSON.stringify(filteredMovie));
+};
 
   return (
     <>
