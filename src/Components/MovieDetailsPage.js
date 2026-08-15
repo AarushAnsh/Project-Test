@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import Spinner from "./Spinner";
 
 const MovieDetailsPage = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const MovieDetailsPage = () => {
   }, []);
 
   if (loading) {
-    return <p className="text-sm text-gray-500">loading... </p>;
+    return <Spinner />;
   }
   if (error) return <p className="text-sm text-red-600">Something went wrong</p>;
 
