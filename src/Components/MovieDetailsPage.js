@@ -1,44 +1,57 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
 
 const MovieDetailsPage = () => {
-     const{id} = useParams();
+  const { id } = useParams();
+  const url = `https://api.tvmaze.com/shows/${id}`;
+  const { data: movie, error, loading } = useFetch(url);
 
-     const [movie,setMovie]=useState(null);
-     const[loader,setLoader]=useState(false);
-     const[err,setErr]=useState(null);
-     async function fetchData(params) {
-       const url =`https://api.tvmaze.com/shows/${id}`;
-       const data = await fetch(url);
-       const res = await data.json();  
-        setMovie(res);   
-     }
-     useEffect(()=>{
-      fetchData();
-     },[id])
-    
+  useEffect(() => {
+    return () => console.log("going out "); //cleanup function runs before unmounting or moving out of this page/component eg. removing timer , resetting state
+  }, []);
+
+  if (loading) {
+    return <p className="text-sm text-gray-500">loading... </p>;
+  }
+  if (error) return <p className="text-sm text-red-600">Something went wrong</p>;
 
   return (
-   
     <div>
-       {
-        movie && 
-        (
-            <div>
-             <img src={movie?.image?.medium} />
-             <h3>{movie?.name}</h3>
-             <h3>{movie?.id}</h3>
-             <h3>{movie?.type}</h3>
-              <h3>{movie?.runtime}</h3>
-              <h3>{movie.language}</h3>
-              <p>{movie.summary}</p>
-            </div>
-        )
-        
+      {movie && (
+        <div className="flex flex-col sm:flex-row gap-6">
+          <img
+            src={movie?.image?.medium}
+            alt={movie?.name}
+            className="w-48 rounded border border-gray-200 shrink-0"
+          />
 
-       }
+          <div className="flex-1">
+            <h1 className="text-2xl font-semibold">{movie?.name}</h1>
+
+            <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm max-w-sm">
+              <dt className="text-gray-500">ID</dt>
+              <dd>{movie?.id}</dd>
+
+              <dt className="text-gray-500">Type</dt>
+              <dd>{movie?.type}</dd>
+
+              <dt className="text-gray-500">Runtime</dt>
+              <dd>{movie?.runtime}</dd>
+
+              <dt className="text-gray-500">Language</dt>
+              <dd>{movie?.language}</dd>
+            </dl>
+
+            <div
+              className="mt-4 text-sm leading-relaxed text-gray-700"
+              dangerouslySetInnerHTML={{ __html: movie?.summary }}
+            />
+          </div>
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default MovieDetailsPage;

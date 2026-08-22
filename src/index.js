@@ -8,8 +8,8 @@ import { MovieContextProvider } from "./Context/MoveData";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <MovieContextProvider>
+    {/* <MovieContextProvider> */}
       <App />
-    </MovieContextProvider>
+    {/* </MovieContextProvider> */}
   </BrowserRouter>
 );
